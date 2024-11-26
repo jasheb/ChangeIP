@@ -1,0 +1,46 @@
+#install and/or setup
+
+#get mac address for the router to automatically assign an ip to
+ifconfig 
+#verify router password is not default: 279kelton
+
+sudo nano /etc/resolv.conf #remove any wrong DNS entries
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get install ssh bind9 apache2 
+
+#set up ssh keys
+#on (not the server/this computer do)
+ssh-keygen -t rsa						
+ssh-copy-id styles@dell
+
+#firewall
+sudo ufw default deny
+sudo ufw allow ssh
+sudo ufw allow domain
+sudo ufw allow www
+sudo ufw logging off
+sudo nano /etc/ssh/sshd_config	#PasswordAuthentication no
+											#AllowTcpForwarding no
+											#X11Forwarding no
+															
+#
+sudo apt-get install python-dateutil
+#
+sudo apt-get install openjdk-6-jre-headless
+
+#htmlunit	
+/home/styles/Installed
+unzip htmlunit-2.8.zip
+
+#
+/home/styles/Installed
+install jython
+
+#
+sudo crontab -e
+0 * * * * /etc/bind/changeIP.cron
+								
+sudo reboot
+
+
